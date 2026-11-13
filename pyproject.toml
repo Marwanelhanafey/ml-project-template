@@ -1,0 +1,36 @@
+[project]
+name = "ml-project-template"
+version = "0.1.0"
+description = "Reusable template for Python ML projects: uv, ruff, pytest, pre-commit, CI, Docker"
+readme = "README.md"
+authors = [
+    { name = "Marwan Elhanafy" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ml-project-template = "ml_project_template:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.5",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
